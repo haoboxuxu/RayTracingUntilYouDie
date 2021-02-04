@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D8CB386725CBA4AE00209288 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8CB386625CBA4AE00209288 /* main.cpp */; };
-		D8CB387025CBA71C00209288 /* Vec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8CB386E25CBA71C00209288 /* Vec3.cpp */; };
-		D8CB387525CBA96000209288 /* Ray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8CB387325CBA96000209288 /* Ray.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,10 +25,13 @@
 /* Begin PBXFileReference section */
 		D8CB386325CBA4AE00209288 /* RayTracinginOneWeekend_cpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracinginOneWeekend_cpp; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8CB386625CBA4AE00209288 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		D8CB386E25CBA71C00209288 /* Vec3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vec3.cpp; sourceTree = "<group>"; };
 		D8CB386F25CBA71C00209288 /* Vec3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vec3.h; sourceTree = "<group>"; };
-		D8CB387325CBA96000209288 /* Ray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Ray.cpp; sourceTree = "<group>"; };
 		D8CB387425CBA96000209288 /* Ray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ray.h; sourceTree = "<group>"; };
+		D8CB387A25CBE51400209288 /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		D8CB388025CC18C900209288 /* hittable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hittable.h; sourceTree = "<group>"; };
+		D8CB388225CC255A00209288 /* Sphere.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sphere.h; sourceTree = "<group>"; };
+		D8CB388325CC2A9600209288 /* hittable_list.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hittable_list.h; sourceTree = "<group>"; };
+		D8CB388425CC2D3C00209288 /* utilitys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utilitys.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,10 +65,13 @@
 			isa = PBXGroup;
 			children = (
 				D8CB386625CBA4AE00209288 /* main.cpp */,
-				D8CB386E25CBA71C00209288 /* Vec3.cpp */,
 				D8CB386F25CBA71C00209288 /* Vec3.h */,
-				D8CB387325CBA96000209288 /* Ray.cpp */,
 				D8CB387425CBA96000209288 /* Ray.h */,
+				D8CB387A25CBE51400209288 /* Color.h */,
+				D8CB388025CC18C900209288 /* hittable.h */,
+				D8CB388225CC255A00209288 /* Sphere.h */,
+				D8CB388325CC2A9600209288 /* hittable_list.h */,
+				D8CB388425CC2D3C00209288 /* utilitys.h */,
 			);
 			path = RayTracinginOneWeekend_cpp;
 			sourceTree = "<group>";
@@ -128,8 +132,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8CB387525CBA96000209288 /* Ray.cpp in Sources */,
-				D8CB387025CBA71C00209288 /* Vec3.cpp in Sources */,
 				D8CB386725CBA4AE00209288 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
