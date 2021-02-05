@@ -8,12 +8,15 @@
 #ifndef hittable_h
 #define hittable_h
 
+#include "utilitys.h"
 #include "Ray.h"
-#include "Vec3.h"
+
+class Material;
 
 struct hit_record {
     point3 p;
     Vec3 normal;
+    shared_ptr<Material> mat_ptr;
     double t;
     bool front_face;
     inline void set_face_normal(const Ray& r, const Vec3& outward_normal) {

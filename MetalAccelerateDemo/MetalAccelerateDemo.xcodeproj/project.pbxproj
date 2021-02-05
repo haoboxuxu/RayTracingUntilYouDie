@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D8CB386725CBA4AE00209288 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8CB386625CBA4AE00209288 /* main.cpp */; };
+		D8D3C72925CDC39400ADA9FE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D3C72825CDC39400ADA9FE /* main.swift */; };
+		D8D3C73125CDC5BC00ADA9FE /* add2arrs.metal in Sources */ = {isa = PBXBuildFile; fileRef = D8D3C73025CDC5BC00ADA9FE /* add2arrs.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D8CB386125CBA4AE00209288 /* CopyFiles */ = {
+		D8D3C72325CDC39400ADA9FE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,22 +24,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D834495725CD5FF700C54F19 /* Material.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
-		D8CB386325CBA4AE00209288 /* RayTracinginOneWeekend_cpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracinginOneWeekend_cpp; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8CB386625CBA4AE00209288 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		D8CB386F25CBA71C00209288 /* Vec3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vec3.h; sourceTree = "<group>"; };
-		D8CB387425CBA96000209288 /* Ray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ray.h; sourceTree = "<group>"; };
-		D8CB387A25CBE51400209288 /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
-		D8CB388025CC18C900209288 /* hittable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hittable.h; sourceTree = "<group>"; };
-		D8CB388225CC255A00209288 /* Sphere.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sphere.h; sourceTree = "<group>"; };
-		D8CB388325CC2A9600209288 /* hittable_list.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hittable_list.h; sourceTree = "<group>"; };
-		D8CB388425CC2D3C00209288 /* utilitys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utilitys.h; sourceTree = "<group>"; };
-		D8CB388625CC3E6700209288 /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
-		D8D3C71A25CD78AA00ADA9FE /* RenderConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RenderConfig.h; sourceTree = "<group>"; };
+		D8D3C72525CDC39400ADA9FE /* MetalAccelerateDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MetalAccelerateDemo; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8D3C72825CDC39400ADA9FE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D8D3C73025CDC5BC00ADA9FE /* add2arrs.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = add2arrs.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D8CB386025CBA4AE00209288 /* Frameworks */ = {
+		D8D3C72225CDC39400ADA9FE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -48,74 +40,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D8CB385A25CBA4AE00209288 = {
+		D8D3C71C25CDC39400ADA9FE = {
 			isa = PBXGroup;
 			children = (
-				D8CB386525CBA4AE00209288 /* RayTracinginOneWeekend_cpp */,
-				D8CB386425CBA4AE00209288 /* Products */,
+				D8D3C72725CDC39400ADA9FE /* MetalAccelerateDemo */,
+				D8D3C72625CDC39400ADA9FE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		D8CB386425CBA4AE00209288 /* Products */ = {
+		D8D3C72625CDC39400ADA9FE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D8CB386325CBA4AE00209288 /* RayTracinginOneWeekend_cpp */,
+				D8D3C72525CDC39400ADA9FE /* MetalAccelerateDemo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D8CB386525CBA4AE00209288 /* RayTracinginOneWeekend_cpp */ = {
+		D8D3C72725CDC39400ADA9FE /* MetalAccelerateDemo */ = {
 			isa = PBXGroup;
 			children = (
-				D8CB386625CBA4AE00209288 /* main.cpp */,
-				D8CB388625CC3E6700209288 /* Camera.h */,
-				D8CB386F25CBA71C00209288 /* Vec3.h */,
-				D8CB387425CBA96000209288 /* Ray.h */,
-				D8CB387A25CBE51400209288 /* Color.h */,
-				D8CB388025CC18C900209288 /* hittable.h */,
-				D8CB388225CC255A00209288 /* Sphere.h */,
-				D8CB388325CC2A9600209288 /* hittable_list.h */,
-				D8CB388425CC2D3C00209288 /* utilitys.h */,
-				D834495725CD5FF700C54F19 /* Material.h */,
-				D8D3C71A25CD78AA00ADA9FE /* RenderConfig.h */,
+				D8D3C72825CDC39400ADA9FE /* main.swift */,
+				D8D3C73025CDC5BC00ADA9FE /* add2arrs.metal */,
 			);
-			path = RayTracinginOneWeekend_cpp;
+			path = MetalAccelerateDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D8CB386225CBA4AE00209288 /* RayTracinginOneWeekend_cpp */ = {
+		D8D3C72425CDC39400ADA9FE /* MetalAccelerateDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D8CB386A25CBA4AE00209288 /* Build configuration list for PBXNativeTarget "RayTracinginOneWeekend_cpp" */;
+			buildConfigurationList = D8D3C72C25CDC39400ADA9FE /* Build configuration list for PBXNativeTarget "MetalAccelerateDemo" */;
 			buildPhases = (
-				D8CB385F25CBA4AE00209288 /* Sources */,
-				D8CB386025CBA4AE00209288 /* Frameworks */,
-				D8CB386125CBA4AE00209288 /* CopyFiles */,
+				D8D3C72125CDC39400ADA9FE /* Sources */,
+				D8D3C72225CDC39400ADA9FE /* Frameworks */,
+				D8D3C72325CDC39400ADA9FE /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = RayTracinginOneWeekend_cpp;
-			productName = RayTracinginOneWeekend_cpp;
-			productReference = D8CB386325CBA4AE00209288 /* RayTracinginOneWeekend_cpp */;
+			name = MetalAccelerateDemo;
+			productName = MetalAccelerateDemo;
+			productReference = D8D3C72525CDC39400ADA9FE /* MetalAccelerateDemo */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D8CB385B25CBA4AE00209288 /* Project object */ = {
+		D8D3C71D25CDC39400ADA9FE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
-					D8CB386225CBA4AE00209288 = {
+					D8D3C72425CDC39400ADA9FE = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
-			buildConfigurationList = D8CB385E25CBA4AE00209288 /* Build configuration list for PBXProject "RayTracinginOneWeekend_cpp" */;
+			buildConfigurationList = D8D3C72025CDC39400ADA9FE /* Build configuration list for PBXProject "MetalAccelerateDemo" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -123,29 +107,30 @@
 				en,
 				Base,
 			);
-			mainGroup = D8CB385A25CBA4AE00209288;
-			productRefGroup = D8CB386425CBA4AE00209288 /* Products */;
+			mainGroup = D8D3C71C25CDC39400ADA9FE;
+			productRefGroup = D8D3C72625CDC39400ADA9FE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D8CB386225CBA4AE00209288 /* RayTracinginOneWeekend_cpp */,
+				D8D3C72425CDC39400ADA9FE /* MetalAccelerateDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D8CB385F25CBA4AE00209288 /* Sources */ = {
+		D8D3C72125CDC39400ADA9FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8CB386725CBA4AE00209288 /* main.cpp in Sources */,
+				D8D3C73125CDC5BC00ADA9FE /* add2arrs.metal in Sources */,
+				D8D3C72925CDC39400ADA9FE /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		D8CB386825CBA4AE00209288 /* Debug */ = {
+		D8D3C72A25CDC39400ADA9FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -201,10 +186,12 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		D8CB386925CBA4AE00209288 /* Release */ = {
+		D8D3C72B25CDC39400ADA9FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -253,51 +240,55 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
-		D8CB386B25CBA4AE00209288 /* Debug */ = {
+		D8D3C72D25CDC39400ADA9FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V32BKVPBTJ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		D8CB386C25CBA4AE00209288 /* Release */ = {
+		D8D3C72E25CDC39400ADA9FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V32BKVPBTJ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D8CB385E25CBA4AE00209288 /* Build configuration list for PBXProject "RayTracinginOneWeekend_cpp" */ = {
+		D8D3C72025CDC39400ADA9FE /* Build configuration list for PBXProject "MetalAccelerateDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D8CB386825CBA4AE00209288 /* Debug */,
-				D8CB386925CBA4AE00209288 /* Release */,
+				D8D3C72A25CDC39400ADA9FE /* Debug */,
+				D8D3C72B25CDC39400ADA9FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D8CB386A25CBA4AE00209288 /* Build configuration list for PBXNativeTarget "RayTracinginOneWeekend_cpp" */ = {
+		D8D3C72C25CDC39400ADA9FE /* Build configuration list for PBXNativeTarget "MetalAccelerateDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D8CB386B25CBA4AE00209288 /* Debug */,
-				D8CB386C25CBA4AE00209288 /* Release */,
+				D8D3C72D25CDC39400ADA9FE /* Debug */,
+				D8D3C72E25CDC39400ADA9FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D8CB385B25CBA4AE00209288 /* Project object */;
+	rootObject = D8D3C71D25CDC39400ADA9FE /* Project object */;
 }

@@ -8,9 +8,9 @@
 #ifndef hittable_list_h
 #define hittable_list_h
 
+#include "hittable.h"
 #include <memory>
 #include <vector>
-#include "hittable.h"
 
 using std::shared_ptr;
 using std::make_shared;
