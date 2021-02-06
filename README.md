@@ -4,7 +4,7 @@
 
 ##### Result Image ⬇️
 
-<img src="./imgs/output_300_10_20.jpg"/>
+<img src="./imgs/output.jpg"/>
 
 ##### TODOS
 
