@@ -1,0 +1,13 @@
+﻿  main.cpp
+C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp\main.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp\utilitys.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp\Ray.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp\Vec3.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp\Color.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp\hittable_list.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp\hittable.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp\Sphere.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp\Material.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp\Camera.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp\RenderConfig.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  CUDA_RayTracinginOneWeekend_cpp.vcxproj -> C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\Debug\CUDA_RayTracinginOneWeekend_cpp.exe
