@@ -2,7 +2,7 @@
 //  Sphere.h
 //  RayTracinginOneWeekend_cpp
 //
-//  Created by 徐浩博 on 2021/2/4.
+//  Created by 徐浩博 on 2021/3/10.
 //
 
 #ifndef Sphere_h
@@ -13,11 +13,11 @@
 
 class Sphere : public hittable {
 public:
-    Sphere() {}
-    Sphere(point3 cen, double r) : center(cen), radius(r) {};
-    Sphere(point3 cen, double r, shared_ptr<Material> m): center(cen), radius(r), mat_ptr(m) {};
+    __device__ Sphere() {}
+    __device__ Sphere(point3 cen, double r) : center(cen), radius(r) {};
+    __device__ Sphere(point3 cen, double r, shared_ptr<Material> m): center(cen), radius(r), mat_ptr(m) {};
     
-    virtual bool hit(const Ray& r, double t_min, double t_max, hit_record& rec) const override;
+    __device__ virtual bool hit(const Ray& r, double t_min, double t_max, hit_record& rec) const override;
     
 public:
     point3 center;
@@ -25,7 +25,7 @@ public:
     shared_ptr<Material> mat_ptr;
 };
 
-bool Sphere::hit(const Ray& r, double t_min, double t_max, hit_record& rec) const {
+__device__ bool Sphere::hit(const Ray& r, double t_min, double t_max, hit_record& rec) const {
     Vec3 oc = r.origin() - center;
     auto a = r.direction().length_squared();
     auto half_b = dot(oc, r.direction());

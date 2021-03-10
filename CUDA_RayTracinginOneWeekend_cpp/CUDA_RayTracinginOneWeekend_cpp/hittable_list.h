@@ -2,7 +2,7 @@
 //  hittable_list.h
 //  RayTracinginOneWeekend_cpp
 //
-//  Created by 徐浩博 on 2021/2/4.
+//  Created by 徐浩博 on 2021/3/10.
 //
 
 #ifndef hittable_list_h
