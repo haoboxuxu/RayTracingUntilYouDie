@@ -9,6 +9,7 @@
 #include "device_launch_parameters.h"
 #include <iostream>
 #include <fstream>
+#include "Vec3.h"
 using namespace std;
 
 // check cuda error
@@ -22,14 +23,12 @@ void check_cuda(cudaError_t result, char const* const func, const char* const fi
     }
 }
 
-__global__ void render(float* fb, int max_x, int max_y) {
+__global__ void render(Vec3* fb, int max_x, int max_y) {
     int i = threadIdx.x + blockIdx.x * blockDim.x;
     int j = threadIdx.y + blockIdx.y * blockDim.y;
     if ((i >= max_x) || (j >= max_y)) return;
-    int pixel_index = j * max_x * 3 + i * 3;
-    fb[pixel_index + 0] = float(i) / max_x;
-    fb[pixel_index + 1] = float(j) / max_y;
-    fb[pixel_index + 2] = 0.2;
+    int pixel_index = j * max_x + i;
+    fb[pixel_index] = Vec3(float(i) / max_x, float(j) / max_y, 0.2f);
 }
 
 int main() {
@@ -51,7 +50,7 @@ int main() {
     size_t fb_size = 3 * num_pixels * sizeof(float);
 
     // allocate FB
-    float* fb;
+    Vec3* fb;
     checkCudaErrors(cudaMallocManaged((void**)&fb, fb_size));
 
     // Render our buffer
@@ -66,13 +65,10 @@ int main() {
     for (int j = image_height - 1; j >= 0; j--) {
         std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
         for (int i = 0; i < image_width; i++) {
-            size_t pixel_index = j * 3 * image_width + i * 3;
-            float r = fb[pixel_index + 0];
-            float g = fb[pixel_index + 1];
-            float b = fb[pixel_index + 2];
-            int ir = int(255.99 * r);
-            int ig = int(255.99 * g);
-            int ib = int(255.99 * b);
+            size_t pixel_index = j * image_width + i;
+            int ir = int(255.99 * fb[pixel_index].r());
+            int ig = int(255.99 * fb[pixel_index].g());
+            int ib = int(255.99 * fb[pixel_index].b());
             fout << ir << " " << ig << " " << ib << "\n";
         }
     }
