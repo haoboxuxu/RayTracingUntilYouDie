@@ -10,6 +10,7 @@
 #include <iostream>
 #include <fstream>
 #include "Vec3.h"
+#include "Ray.h"
 using namespace std;
 
 // check cuda error
@@ -23,12 +24,21 @@ void check_cuda(cudaError_t result, char const* const func, const char* const fi
     }
 }
 
-__global__ void render(Vec3* fb, int max_x, int max_y) {
+__device__ Vec3 color(const Ray& r) {
+    Vec3 unit_direction = unit_vector(r.direction());
+    float t = 0.5f * (unit_direction.y() + 1.0f);
+    return (1.0f - t) * Vec3(1.0, 1.0, 1.0) + t * Vec3(0.5, 0.7, 1.0);
+}
+
+__global__ void render(Vec3* fb, int max_x, int max_y, Vec3 lower_left_corner, Vec3 horizontal, Vec3 vertical, Vec3 origin) {
     int i = threadIdx.x + blockIdx.x * blockDim.x;
     int j = threadIdx.y + blockIdx.y * blockDim.y;
     if ((i >= max_x) || (j >= max_y)) return;
     int pixel_index = j * max_x + i;
-    fb[pixel_index] = Vec3(float(i) / max_x, float(j) / max_y, 0.2f);
+    float u = float(i) / float(max_x);
+    float v = float(j) / float(max_y);
+    Ray r(origin, lower_left_corner + u * horizontal + v * vertical);
+    fb[pixel_index] = color(r);
 }
 
 int main() {
@@ -38,10 +48,21 @@ int main() {
         return -1;
     }
 
-    int image_width = 256;
-    int image_height = 256;
+    // Image
+    const auto aspect_ratio = 16.0 / 9.0;
+    const int image_width = 400;
+    const int image_height = static_cast<int>(image_width / aspect_ratio);
     int tx = 8;
     int ty = 8;
+
+    // Camera
+    auto viewport_height = 2.0;
+    auto viewport_width = aspect_ratio * viewport_height;
+    auto focal_length = 1.0;
+    auto origin = Point3(0, 0, 0);
+    auto horizontal = Vec3(viewport_width, 0, 0);
+    auto vertical = Vec3(0, viewport_height, 0);
+    auto lower_left_corner = origin - horizontal / 2 - vertical / 2 - Vec3(0, 0, focal_length);
 
     std::cerr << "Rendering a " << image_width << "x" << image_height << " image ";
     std::cerr << "in " << tx << "x" << ty << " blocks.\n";
@@ -56,7 +77,11 @@ int main() {
     // Render our buffer
     dim3 blocks(image_width / tx + 1, image_height / ty + 1);
     dim3 threads(tx, ty);
-    render << <blocks, threads >> > (fb, image_width, image_height);
+    render << <blocks, threads >> > (fb, image_width, image_height,
+                                     lower_left_corner,
+                                     horizontal,
+                                     vertical,
+                                     origin);
     checkCudaErrors(cudaGetLastError());
     checkCudaErrors(cudaDeviceSynchronize());
 

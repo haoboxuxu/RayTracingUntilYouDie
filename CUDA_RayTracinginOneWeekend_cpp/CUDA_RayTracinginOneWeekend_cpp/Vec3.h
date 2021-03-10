@@ -1,5 +1,4 @@
-#ifndef Vec3_H
-#define VEC_3H
+#pragma once
 
 #include "cuda_runtime.h"
 #include <math.h>
@@ -37,6 +36,9 @@ public:
 public:
 	float e[3];
 };
+
+using Point3 = Vec3;
+using Color = Vec3;
 
 inline std::istream& operator>>(std::istream& is, Vec3& t) {
     is >> t.e[0] >> t.e[1] >> t.e[2];
@@ -139,5 +141,3 @@ __host__ __device__ inline Vec3& Vec3::operator/=(const float t) {
 __host__ __device__ inline Vec3 unit_vector(Vec3 v) {
     return v / v.length();
 }
-
-#endif
