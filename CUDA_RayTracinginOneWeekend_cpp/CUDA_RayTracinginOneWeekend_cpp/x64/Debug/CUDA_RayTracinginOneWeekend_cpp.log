@@ -1,10 +1,12 @@
 ﻿  Compiling CUDA source file main.cu...
   
   C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\bin\HostX86\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include"  -G   --keep-dir x64\Debug -maxrregcount=0  --machine 64 --compile -cudart static  -g   -D_DEBUG -D_CONSOLE -D_UNICODE -DUNICODE -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc142.pdb /FS /Zi /RTC1 /MDd " -o x64\Debug\main.cu.obj "C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp\main.cu" 
+CUDACOMPILE : ptxas warning : Stack size for entry function '_Z6renderP4Vec3iiS_S_S_S_PP7Hitable' cannot be statically determined
   main.cu
 C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp\Vec3.h(54): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
 C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp\Vec3.h(133): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-C:/Users/haobo/Desktop/RayTracingUntilYouDie/CUDA_RayTracinginOneWeekend_cpp/CUDA_RayTracinginOneWeekend_cpp/main.cu(63): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-C:/Users/haobo/Desktop/RayTracingUntilYouDie/CUDA_RayTracinginOneWeekend_cpp/CUDA_RayTracinginOneWeekend_cpp/main.cu(64): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-C:/Users/haobo/Desktop/RayTracingUntilYouDie/CUDA_RayTracinginOneWeekend_cpp/CUDA_RayTracinginOneWeekend_cpp/main.cu(65): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\CUDA_RayTracinginOneWeekend_cpp\Sphere.h(8): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+C:/Users/haobo/Desktop/RayTracingUntilYouDie/CUDA_RayTracinginOneWeekend_cpp/CUDA_RayTracinginOneWeekend_cpp/main.cu(103): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+C:/Users/haobo/Desktop/RayTracingUntilYouDie/CUDA_RayTracinginOneWeekend_cpp/CUDA_RayTracinginOneWeekend_cpp/main.cu(104): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+C:/Users/haobo/Desktop/RayTracingUntilYouDie/CUDA_RayTracinginOneWeekend_cpp/CUDA_RayTracinginOneWeekend_cpp/main.cu(105): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
   CUDA_RayTracinginOneWeekend_cpp.vcxproj -> C:\Users\haobo\Desktop\RayTracingUntilYouDie\CUDA_RayTracinginOneWeekend_cpp\x64\Debug\CUDA_RayTracinginOneWeekend_cpp.exe

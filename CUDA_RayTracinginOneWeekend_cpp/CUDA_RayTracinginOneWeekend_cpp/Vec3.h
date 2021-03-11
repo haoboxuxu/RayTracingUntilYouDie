@@ -30,7 +30,7 @@ public:
     __host__ __device__ inline Vec3& operator/=(const float t);
 
     __host__ __device__ inline float length() const { return sqrt(e[0] * e[0] + e[1] * e[1] + e[2] * e[2]); }
-    __host__ __device__ inline float squared_length() const { return e[0] * e[0] + e[1] * e[1] + e[2] * e[2]; }
+    __host__ __device__ inline float length_squared() const { return e[0] * e[0] + e[1] * e[1] + e[2] * e[2]; }
     __host__ __device__ inline void make_unit_vector();
 
 public:

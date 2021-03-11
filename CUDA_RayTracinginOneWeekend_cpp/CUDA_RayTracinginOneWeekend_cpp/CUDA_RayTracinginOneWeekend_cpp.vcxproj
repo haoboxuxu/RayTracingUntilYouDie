@@ -22,7 +22,10 @@
     <CudaCompile Include="main.cu" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Hitable.h" />
+    <ClInclude Include="HitableList.h" />
     <ClInclude Include="Ray.h" />
+    <ClInclude Include="Sphere.h" />
     <ClInclude Include="Vec3.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

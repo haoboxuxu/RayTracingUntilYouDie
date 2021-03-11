@@ -11,6 +11,9 @@
 #include <fstream>
 #include "Vec3.h"
 #include "Ray.h"
+#include "Sphere.h"
+#include "Hitable.h"
+#include "HitableList.h"
 using namespace std;
 
 // check cuda error
@@ -24,13 +27,27 @@ void check_cuda(cudaError_t result, char const* const func, const char* const fi
     }
 }
 
-__device__ Vec3 color(const Ray& r) {
-    Vec3 unit_direction = unit_vector(r.direction());
-    float t = 0.5f * (unit_direction.y() + 1.0f);
-    return (1.0f - t) * Vec3(1.0, 1.0, 1.0) + t * Vec3(0.5, 0.7, 1.0);
+__device__ bool hit_sphere(const Point3& center, float radius, const Ray& r) {
+    Vec3 oc = r.origin() - center;
+    float a = dot(r.direction(), r.direction());
+    float b = 2.0f * dot(oc, r.direction());
+    float c = dot(oc, oc) - radius * radius;
+    float discriminant = b * b - 4.0f * a * c;
+    return (discriminant > 0.0f);
 }
 
-__global__ void render(Vec3* fb, int max_x, int max_y, Vec3 lower_left_corner, Vec3 horizontal, Vec3 vertical, Vec3 origin) {
+__device__ Vec3 color(const Ray& r, Hitable** world) {
+    HitRecord rec;
+    if ((*world)->hit(r, 0.0, FLT_MAX, rec)) {
+        return 0.5f * Vec3(rec.normal.x() + 1.0f, rec.normal.y() + 1.0f, rec.normal.z() + 1.0f);
+    } else {
+        Vec3 unit_direction = unit_vector(r.direction());
+        float t = 0.5f * (unit_direction.y() + 1.0f);
+        return (1.0f - t) * Vec3(1.0, 1.0, 1.0) + t * Vec3(0.5, 0.7, 1.0);
+    }
+}
+
+__global__ void render(Vec3* fb, int max_x, int max_y, Vec3 lower_left_corner, Vec3 horizontal, Vec3 vertical, Vec3 origin, Hitable** world) {
     int i = threadIdx.x + blockIdx.x * blockDim.x;
     int j = threadIdx.y + blockIdx.y * blockDim.y;
     if ((i >= max_x) || (j >= max_y)) return;
@@ -38,7 +55,21 @@ __global__ void render(Vec3* fb, int max_x, int max_y, Vec3 lower_left_corner, V
     float u = float(i) / float(max_x);
     float v = float(j) / float(max_y);
     Ray r(origin, lower_left_corner + u * horizontal + v * vertical);
-    fb[pixel_index] = color(r);
+    fb[pixel_index] = color(r, world);
+}
+
+__global__ void create_world(Hitable** d_list, Hitable** d_world) {
+    if (threadIdx.x == 0 && blockIdx.x == 0) {
+        *(d_list) = new Sphere(Vec3(0, 0, -1), 0.5);
+        *(d_list + 1) = new Sphere(Vec3(0, -100.5, -1), 100);
+        *d_world = new HitableList(d_list, 2);
+    }
+}
+
+__global__ void free_world(Hitable** d_list, Hitable** d_world) {
+    delete* (d_list);
+    delete* (d_list + 1);
+    delete* d_world;
 }
 
 int main() {
@@ -54,6 +85,15 @@ int main() {
     const int image_height = static_cast<int>(image_width / aspect_ratio);
     int tx = 8;
     int ty = 8;
+
+    // World
+    Hitable** d_list;
+    checkCudaErrors(cudaMalloc((void**)&d_list, 2 * sizeof(Hitable*)));
+    Hitable** d_world;
+    checkCudaErrors(cudaMalloc((void**)&d_world, sizeof(Hitable*)));
+    create_world << <1, 1 >> > (d_list, d_world);
+    checkCudaErrors(cudaGetLastError());
+    checkCudaErrors(cudaDeviceSynchronize());
 
     // Camera
     auto viewport_height = 2.0;
@@ -81,7 +121,7 @@ int main() {
                                      lower_left_corner,
                                      horizontal,
                                      vertical,
-                                     origin);
+                                     origin, d_world);
     checkCudaErrors(cudaGetLastError());
     checkCudaErrors(cudaDeviceSynchronize());
 
@@ -98,6 +138,11 @@ int main() {
         }
     }
 
+    checkCudaErrors(cudaDeviceSynchronize());
+    free_world << <1, 1 >> > (d_list, d_world);
+    checkCudaErrors(cudaGetLastError());
+    checkCudaErrors(cudaFree(d_list));
+    checkCudaErrors(cudaFree(d_world));
     checkCudaErrors(cudaFree(fb));
 
     std::cerr << "\nDone.\n";
