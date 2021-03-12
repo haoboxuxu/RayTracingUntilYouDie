@@ -16,6 +16,7 @@
 #include "Hitable.h"
 #include "HitableList.h"
 #include "Camera.h"
+#include "config.h"
 using namespace std;
 
 // check cuda error
@@ -29,15 +30,24 @@ void check_cuda(cudaError_t result, char const* const func, const char* const fi
     }
 }
 
-__device__ Vec3 color(const Ray& r, Hitable** world) {
-    HitRecord rec;
-    if ((*world)->hit(r, 0.0, FLT_MAX, rec)) {
-        return 0.5f * Vec3(rec.normal.x() + 1.0f, rec.normal.y() + 1.0f, rec.normal.z() + 1.0f);
-    } else {
-        Vec3 unit_direction = unit_vector(r.direction());
-        float t = 0.5f * (unit_direction.y() + 1.0f);
-        return (1.0f - t) * Vec3(1.0, 1.0, 1.0) + t * Vec3(0.5, 0.7, 1.0);
+__device__ Vec3 color(const Ray& r, Hitable** world, curandState* local_rand_state) {
+    Ray cur_ray = r;
+    float cur_attenuation = 1.0f;
+    for (int i = 0; i < max_depth; i++) {
+        HitRecord rec;
+        if ((*world)->hit(cur_ray, 0.001f, FLT_MAX, rec)) {
+            Vec3 target = rec.p + rec.normal + random_in_unit_sphere(local_rand_state);
+            cur_attenuation *= 0.5f;
+            cur_ray = Ray(rec.p, target - rec.p);
+        }
+        else {
+            Vec3 unit_direction = unit_vector(cur_ray.direction());
+            float t = 0.5f * (unit_direction.y() + 1.0f);
+            Vec3 c = (1.0f - t) * Vec3(1.0, 1.0, 1.0) + t * Vec3(0.5, 0.7, 1.0);
+            return cur_attenuation * c;
+        }
     }
+    return Vec3(0.0, 0.0, 0.0); // exceeded recursion
 }
 
 __global__ void render_init(int max_x, int max_y, curandState* rand_state) {
@@ -60,9 +70,14 @@ __global__ void render(Vec3* fb, int max_x, int max_y, int samples_per_pixel, Ca
         float u = float(i + curand_uniform(&local_rand_state)) / float(max_x);
         float v = float(j + curand_uniform(&local_rand_state)) / float(max_y);
         Ray r = (*cam)->get_ray(u, v);
-        pixel_color += color(r, world);
+        pixel_color += color(r, world, &local_rand_state);
     }
-    fb[pixel_index] = pixel_color / float(samples_per_pixel);
+    rand_state[pixel_index] = local_rand_state;
+    pixel_color /= float(samples_per_pixel);
+    pixel_color[0] = sqrt(pixel_color[0]);
+    pixel_color[1] = sqrt(pixel_color[1]);
+    pixel_color[2] = sqrt(pixel_color[2]);
+    fb[pixel_index] = pixel_color;
 }
 
 __global__ void create_world(Hitable** d_list, Hitable** d_world, Camera** d_camera) {
@@ -89,14 +104,10 @@ int main() {
     }
 
     // Image
-    const auto aspect_ratio = 16.0 / 9.0;
-    const int image_width = 400;
-    const int image_height = static_cast<int>(image_width / aspect_ratio);
-    const int samples_per_pixel = 100;
     int tx = 8;
     int ty = 8;
     int num_pixels = image_width * image_height;
-    size_t fb_size = 3 * num_pixels * sizeof(float);
+    size_t fb_size = num_pixels * sizeof(Vec3);
 
     // allocate FB
     Vec3* fb;
@@ -125,6 +136,9 @@ int main() {
     // Render our buffer
     dim3 blocks(image_width / tx + 1, image_height / ty + 1);
     dim3 threads(tx, ty);
+    render_init << <blocks, threads >> > (image_width, image_height, d_rand_state);
+    checkCudaErrors(cudaGetLastError());
+    checkCudaErrors(cudaDeviceSynchronize());
     render << <blocks, threads >> > (fb, image_width, image_height, samples_per_pixel, d_camera, d_world, d_rand_state);
     checkCudaErrors(cudaGetLastError());
     checkCudaErrors(cudaDeviceSynchronize());

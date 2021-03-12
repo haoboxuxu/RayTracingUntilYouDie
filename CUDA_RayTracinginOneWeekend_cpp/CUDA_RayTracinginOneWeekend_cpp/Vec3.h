@@ -141,3 +141,14 @@ __host__ __device__ inline Vec3& Vec3::operator/=(const float t) {
 __host__ __device__ inline Vec3 unit_vector(Vec3 v) {
     return v / v.length();
 }
+
+// 3d geometry
+#define RANDVEC3 Vec3(curand_uniform(local_rand_state),curand_uniform(local_rand_state),curand_uniform(local_rand_state))
+
+__device__ Vec3 random_in_unit_sphere(curandState* local_rand_state) {
+    Vec3 p;
+    do {
+        p = 2.0f * RANDVEC3 - Vec3(1, 1, 1);
+    } while (p.length_squared() >= 1.0f);
+    return p;
+}
