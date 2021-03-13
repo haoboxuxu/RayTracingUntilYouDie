@@ -2,11 +2,14 @@
 
 #include "Ray.h"
 
+class Material;
+
 struct HitRecord {
     Point3 p;
     Vec3 normal;
     double t;
     bool front_face;
+    Material* mat_ptr;
 
     __device__ inline void set_face_normal(const Ray& r, const Vec3& outward_normal) {
         front_face = dot(r.direction(), outward_normal) < 0;

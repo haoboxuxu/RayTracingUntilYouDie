@@ -32,6 +32,7 @@ public:
     __host__ __device__ inline float length() const { return sqrt(e[0] * e[0] + e[1] * e[1] + e[2] * e[2]); }
     __host__ __device__ inline float length_squared() const { return e[0] * e[0] + e[1] * e[1] + e[2] * e[2]; }
     __host__ __device__ inline void make_unit_vector();
+    __host__ __device__ inline bool near_zero() const;
 
 public:
 	float e[3];
@@ -151,4 +152,18 @@ __device__ Vec3 random_in_unit_sphere(curandState* local_rand_state) {
         p = 2.0f * RANDVEC3 - Vec3(1, 1, 1);
     } while (p.length_squared() >= 1.0f);
     return p;
+}
+
+__device__ Vec3 random_unit_vector(curandState* local_rand_state) {
+    return unit_vector(random_in_unit_sphere(local_rand_state));
+}
+
+__device__ Vec3 reflect(const Vec3& v, const Vec3& n) {
+    return v - 2.0f * dot(v, n) * n;
+}
+
+__host__ __device__ inline bool Vec3::near_zero() const {
+    // Return true if the vector is close to zero in all dimensions.
+    const auto s = 1e-8;
+    return (fabs(e[0]) < s) && (fabs(e[1]) < s) && (fabs(e[2]) < s);
 }

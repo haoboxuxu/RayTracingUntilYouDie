@@ -17,6 +17,7 @@
 #include "HitableList.h"
 #include "Camera.h"
 #include "config.h"
+#include "Material.h"
 using namespace std;
 
 // check cuda error
@@ -32,15 +33,20 @@ void check_cuda(cudaError_t result, char const* const func, const char* const fi
 
 __device__ Vec3 color(const Ray& r, Hitable** world, curandState* local_rand_state) {
     Ray cur_ray = r;
-    float cur_attenuation = 1.0f;
+    Vec3 cur_attenuation = Vec3(1.0, 1.0, 1.0);
     for (int i = 0; i < max_depth; i++) {
         HitRecord rec;
         if ((*world)->hit(cur_ray, 0.001f, FLT_MAX, rec)) {
-            Vec3 target = rec.p + rec.normal + random_in_unit_sphere(local_rand_state);
-            cur_attenuation *= 0.5f;
-            cur_ray = Ray(rec.p, target - rec.p);
-        }
-        else {
+            Ray scattered;
+            Vec3 attenuation;
+            if (rec.mat_ptr->scatter(cur_ray, rec, attenuation, scattered, local_rand_state)) {
+                cur_attenuation *= attenuation;
+                cur_ray = scattered;
+            }
+            else {
+                return Vec3(0.0, 0.0, 0.0);
+            }
+        } else {
             Vec3 unit_direction = unit_vector(cur_ray.direction());
             float t = 0.5f * (unit_direction.y() + 1.0f);
             Vec3 c = (1.0f - t) * Vec3(1.0, 1.0, 1.0) + t * Vec3(0.5, 0.7, 1.0);
@@ -82,9 +88,11 @@ __global__ void render(Vec3* fb, int max_x, int max_y, int samples_per_pixel, Ca
 
 __global__ void create_world(Hitable** d_list, Hitable** d_world, Camera** d_camera) {
     if (threadIdx.x == 0 && blockIdx.x == 0) {
-        *(d_list) = new Sphere(Vec3(0, 0, -1), 0.5);
-        *(d_list + 1) = new Sphere(Vec3(0, -100.5, -1), 100);
-        *d_world = new HitableList(d_list, 2);
+        d_list[0] = new Sphere(Vec3(0, 0, -1), 0.5, new Lambertian(Vec3(0.8, 0.3, 0.3)));
+        d_list[1] = new Sphere(Vec3(0, -100.5, -1), 100,  new Lambertian(Vec3(0.8, 0.8, 0.0)));
+        d_list[2] = new Sphere(Vec3(1, 0, -1), 0.5, new Metal(Vec3(0.8, 0.6, 0.2), 1.0));
+        d_list[3] = new Sphere(Vec3(-1, 0, -1), 0.5, new Metal(Vec3(0.8, 0.8, 0.8), 0.3));
+        *d_world = new HitableList(d_list, 4);
         *d_camera = new Camera();
     }
 }
