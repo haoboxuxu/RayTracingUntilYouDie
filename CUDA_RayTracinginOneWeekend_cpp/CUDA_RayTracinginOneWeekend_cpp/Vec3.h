@@ -146,6 +146,10 @@ __host__ __device__ inline Vec3 unit_vector(Vec3 v) {
 // 3d geometry
 #define RANDVEC3 Vec3(curand_uniform(local_rand_state),curand_uniform(local_rand_state),curand_uniform(local_rand_state))
 
+__device__ float random_float(curandState* local_rand_state) {
+    return curand_uniform(local_rand_state);
+}
+
 __device__ Vec3 random_in_unit_sphere(curandState* local_rand_state) {
     Vec3 p;
     do {
@@ -166,4 +170,24 @@ __host__ __device__ inline bool Vec3::near_zero() const {
     // Return true if the vector is close to zero in all dimensions.
     const auto s = 1e-8;
     return (fabs(e[0]) < s) && (fabs(e[1]) < s) && (fabs(e[2]) < s);
+}
+
+__device__ float float_min(const float a, const float b) {
+    return a > b ? b : a;
+}
+
+__device__ Vec3 refract(const Vec3& uv, const Vec3& n, float etai_over_etat) {
+    auto cos_theta = float_min(dot(-uv, n), 1.0);
+    Vec3 r_out_perp = etai_over_etat * (uv + cos_theta * n);
+    Vec3 r_out_parallel = -sqrt(fabs(1.0 - r_out_perp.length_squared())) * n;
+    return r_out_perp + r_out_parallel;
+}
+
+__device__ float reflectance(float cosine, float ref_idx) {
+    // Use Schlick's approximation for reflectance.
+    float r0 = (1 - ref_idx) / (1 + ref_idx);
+    r0 = r0 * r0;
+    float fuck = (1 - cosine) * (1 - cosine) * (1 - cosine) * (1 - cosine) * (1 - cosine);
+    //return r0 + (1 - r0) * pow((1 - cosine), 5);
+    return r0 + (1 - r0) * fuck;
 }
