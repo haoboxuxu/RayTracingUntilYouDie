@@ -94,7 +94,7 @@ __global__ void create_world(Hitable** d_list, Hitable** d_world, Camera** d_cam
         d_list[3] = new Sphere(Vec3(-1, 0, -1), 0.5, new Dielectric(1.5));
         d_list[4] = new Sphere(Vec3(-1, 0, -1), -0.45, new Dielectric(1.5));
         *d_world = new HitableList(d_list, 5);
-        *d_camera = new Camera();
+        *d_camera = new Camera(Vec3(-2, 2, 1), Vec3(0, 0, -1), Vec3(0, 1, 0), 20.0, 16.0 / 9.0);
     }
 }
 
