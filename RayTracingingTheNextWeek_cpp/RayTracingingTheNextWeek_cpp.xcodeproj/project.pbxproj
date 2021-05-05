@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D874E4DC25CF754A008A4713 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D874E4DB25CF754A008A4713 /* main.cpp */; };
+		D849C5982642D26A00D56880 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D849C5922642D26A00D56880 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +23,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D849C58D2642D26A00D56880 /* Vec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vec3.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/Vec3.h; sourceTree = "<group>"; };
+		D849C58E2642D26A00D56880 /* hittable_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hittable_list.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/hittable_list.h; sourceTree = "<group>"; };
+		D849C58F2642D26A00D56880 /* RenderConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RenderConfig.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/RenderConfig.h; sourceTree = "<group>"; };
+		D849C5902642D26A00D56880 /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Material.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/Material.h; sourceTree = "<group>"; };
+		D849C5912642D26A00D56880 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Color.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/Color.h; sourceTree = "<group>"; };
+		D849C5922642D26A00D56880 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/main.cpp; sourceTree = "<group>"; };
+		D849C5932642D26A00D56880 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/Camera.h; sourceTree = "<group>"; };
+		D849C5942642D26A00D56880 /* Sphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sphere.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/Sphere.h; sourceTree = "<group>"; };
+		D849C5952642D26A00D56880 /* utilitys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utilitys.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/utilitys.h; sourceTree = "<group>"; };
+		D849C5962642D26A00D56880 /* hittable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hittable.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/hittable.h; sourceTree = "<group>"; };
+		D849C5972642D26A00D56880 /* Ray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ray.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/Ray.h; sourceTree = "<group>"; };
 		D874E4D825CF754A008A4713 /* RayTracingingTheNextWeek_cpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracingingTheNextWeek_cpp; sourceTree = BUILT_PRODUCTS_DIR; };
-		D874E4DB25CF754A008A4713 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +67,17 @@
 		D874E4DA25CF754A008A4713 /* RayTracingingTheNextWeek_cpp */ = {
 			isa = PBXGroup;
 			children = (
-				D874E4DB25CF754A008A4713 /* main.cpp */,
+				D849C5932642D26A00D56880 /* Camera.h */,
+				D849C5912642D26A00D56880 /* Color.h */,
+				D849C58E2642D26A00D56880 /* hittable_list.h */,
+				D849C5962642D26A00D56880 /* hittable.h */,
+				D849C5922642D26A00D56880 /* main.cpp */,
+				D849C5902642D26A00D56880 /* Material.h */,
+				D849C5972642D26A00D56880 /* Ray.h */,
+				D849C58F2642D26A00D56880 /* RenderConfig.h */,
+				D849C5942642D26A00D56880 /* Sphere.h */,
+				D849C5952642D26A00D56880 /* utilitys.h */,
+				D849C58D2642D26A00D56880 /* Vec3.h */,
 			);
 			path = RayTracingingTheNextWeek_cpp;
 			sourceTree = "<group>";
@@ -118,7 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D874E4DC25CF754A008A4713 /* main.cpp in Sources */,
+				D849C5982642D26A00D56880 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
