@@ -15,6 +15,7 @@
 #include "Camera.h"
 #include "Material.h"
 #include "RenderConfig.h"
+#include "moving_sphere.h"
 using namespace std;
 
 hittable_list random_scene() {
@@ -35,7 +36,8 @@ hittable_list random_scene() {
                     // diffuse
                     auto albedo = color::random() * color::random();
                     sphere_material = make_shared<Lambertian>(albedo);
-                    world.add(make_shared<Sphere>(center, 0.2, sphere_material));
+                    auto center2 = center + Vec3(0, random_double(0,.5), 0);
+                    world.add(make_shared<MovingSphere>(center, center2, 0.0, 1.0, 0.2, sphere_material));
                 } else if (choose_mat < 0.95) {
                     // metal
                     auto albedo = color::random(0.5, 1);
@@ -107,7 +109,7 @@ int main() {
     auto dist_to_focus = 10.0;
     auto aperture = 0.1;
     
-    Camera cam(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus);
+    Camera cam(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus, 0.0, 1.0);
     
     // Render
     fout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
