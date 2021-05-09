@@ -34,8 +34,10 @@
 		D849C5952642D26A00D56880 /* utilitys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utilitys.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/utilitys.h; sourceTree = "<group>"; };
 		D849C5962642D26A00D56880 /* hittable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hittable.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/hittable.h; sourceTree = "<group>"; };
 		D849C5972642D26A00D56880 /* Ray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ray.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/Ray.h; sourceTree = "<group>"; };
-		D849C5992642D97400D56880 /* moving_sphere.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = moving_sphere.h; sourceTree = "<group>"; };
+		D849C5992642D97400D56880 /* MovingSphere.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovingSphere.h; sourceTree = "<group>"; };
 		D874E4D825CF754A008A4713 /* RayTracingingTheNextWeek_cpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracingingTheNextWeek_cpp; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8F9280426457BEB00394A0D /* AABB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AABB.h; sourceTree = "<group>"; };
+		D8F928062646651E00394A0D /* bvh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bvh.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +81,9 @@
 				D849C5942642D26A00D56880 /* Sphere.h */,
 				D849C5952642D26A00D56880 /* utilitys.h */,
 				D849C58D2642D26A00D56880 /* Vec3.h */,
-				D849C5992642D97400D56880 /* moving_sphere.h */,
+				D849C5992642D97400D56880 /* MovingSphere.h */,
+				D8F9280426457BEB00394A0D /* AABB.h */,
+				D8F928062646651E00394A0D /* bvh.h */,
 			);
 			path = RayTracingingTheNextWeek_cpp;
 			sourceTree = "<group>";
