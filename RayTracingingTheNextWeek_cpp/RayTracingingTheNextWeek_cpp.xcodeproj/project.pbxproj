@@ -36,6 +36,7 @@
 		D849C5972642D26A00D56880 /* Ray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ray.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/Ray.h; sourceTree = "<group>"; };
 		D849C5992642D97400D56880 /* MovingSphere.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovingSphere.h; sourceTree = "<group>"; };
 		D874E4D825CF754A008A4713 /* RayTracingingTheNextWeek_cpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracingingTheNextWeek_cpp; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8C6C7052648E198006C8648 /* texture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = texture.h; sourceTree = "<group>"; };
 		D8F9280426457BEB00394A0D /* AABB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AABB.h; sourceTree = "<group>"; };
 		D8F928062646651E00394A0D /* bvh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bvh.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +85,7 @@
 				D849C5992642D97400D56880 /* MovingSphere.h */,
 				D8F9280426457BEB00394A0D /* AABB.h */,
 				D8F928062646651E00394A0D /* bvh.h */,
+				D8C6C7052648E198006C8648 /* texture.h */,
 			);
 			path = RayTracingingTheNextWeek_cpp;
 			sourceTree = "<group>";
