@@ -15,14 +15,28 @@
 #include "Camera.h"
 #include "Material.h"
 #include "RenderConfig.h"
-#include "moving_sphere.h"
+#include "MovingSphere.h"
+#include "AABB.h"
+#include "bvh.h"
+#include "texture.h"
 using namespace std;
+
+hittable_list two_spheres() {
+    hittable_list objects;
+    
+    auto checker = make_shared<CheckerTexture>(color(0.2, 0.3, 0.1), color(0.9, 0.9, 0.9));
+    
+    objects.add(make_shared<Sphere>(point3(0,-10, 0), 10, make_shared<Lambertian>(checker)));
+    objects.add(make_shared<Sphere>(point3(0, 10, 0), 10, make_shared<Lambertian>(checker)));
+    
+    return objects;
+}
 
 hittable_list random_scene() {
     hittable_list world;
     
-    auto ground_material = make_shared<Lambertian>(color(0.5, 0.5, 0.5));
-    world.add(make_shared<Sphere>(point3(0,-1000,0), 1000, ground_material));
+    auto checker = make_shared<CheckerTexture>(color(0.2, 0.3, 0.1), color(0.9, 0.9, 0.9));
+    world.add(make_shared<Sphere>(point3(0,-1000,0), 1000, make_shared<Lambertian>(checker)));
     
     for (int a = -11; a < 11; a++) {
         for (int b = -11; b < 11; b++) {
@@ -100,16 +114,35 @@ int main() {
     // Image
     
     // World
-    auto world = random_scene();
+    hittable_list world;
+    
+    point3 lookfrom;
+    point3 lookat;
+    auto vfov = 40.0;
+    auto aperture = 0.0;
+    
+    switch (0) {
+        case 1:
+            world = random_scene();
+            lookfrom = point3(13,2,3);
+            lookat = point3(0,0,0);
+            vfov = 20.0;
+            aperture = 0.1;
+            break;
+        default:
+        case 2:
+            world = two_spheres();
+            lookfrom = point3(13,2,3);
+            lookat = point3(0,0,0);
+            vfov = 20.0;
+            break;
+    }
     
     // Camera
-    point3 lookfrom(13,2,3);
-    point3 lookat(0,0,0);
     Vec3 vup(0,1,0);
     auto dist_to_focus = 10.0;
-    auto aperture = 0.1;
-    
-    Camera cam(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus, 0.0, 1.0);
+
+    Camera cam(lookfrom, lookat, vup, vfov, aspect_ratio, aperture, dist_to_focus, 0.0, 1.0);
     
     // Render
     fout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
