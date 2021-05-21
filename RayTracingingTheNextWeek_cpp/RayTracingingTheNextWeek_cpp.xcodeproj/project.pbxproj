@@ -23,6 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D8075F382657A1F400D3D88D /* perlin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = perlin.h; sourceTree = "<group>"; };
 		D849C58D2642D26A00D56880 /* Vec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vec3.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/Vec3.h; sourceTree = "<group>"; };
 		D849C58E2642D26A00D56880 /* hittable_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hittable_list.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/hittable_list.h; sourceTree = "<group>"; };
 		D849C58F2642D26A00D56880 /* RenderConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RenderConfig.h; path = ../../RayTracinginOneWeekend_cpp/RayTracinginOneWeekend_cpp/RenderConfig.h; sourceTree = "<group>"; };
@@ -86,6 +87,7 @@
 				D8F9280426457BEB00394A0D /* AABB.h */,
 				D8F928062646651E00394A0D /* bvh.h */,
 				D8C6C7052648E198006C8648 /* texture.h */,
+				D8075F382657A1F400D3D88D /* perlin.h */,
 			);
 			path = RayTracingingTheNextWeek_cpp;
 			sourceTree = "<group>";

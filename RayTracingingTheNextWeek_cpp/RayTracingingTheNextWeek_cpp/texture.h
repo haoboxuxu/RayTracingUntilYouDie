@@ -8,6 +8,8 @@
 #ifndef texture_h
 #define texture_h
 
+#include "perlin.h"
+
 class Texture {
 public:
     virtual color value(double u, double v, const point3& p) const = 0;
@@ -44,6 +46,16 @@ public:
 public:
     shared_ptr<Texture> odd;
     shared_ptr<Texture> even;
+};
+
+class NoiseTexture : public Texture {
+public:
+    NoiseTexture() {}
+    color value(double u, double v, const point3 &p) const override {
+        return color(1, 1, 1) * noise.noise(p);
+    }
+public:
+    Perlin noise;
 };
 
 
